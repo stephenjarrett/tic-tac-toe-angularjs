@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="board row" ng-repeat="row in [0, 1, 2]">
+        <div class="column" ng-repeat="col in [0, 1, 2]">
+            <square
+                value="{{ vm.squareArray[col + row * 3] }}"
+                ng-click="vm.handleSquareClick(col + row * 3);"
+            >
+            </square>
+        </div>
+    </div>
+    <div>
+        <li>Turn: {{ vm.playerTurn }}</li>
+        <li>Wins for X: {{ vm.xScore }}</li>
+        <li>Wins for Y: {{ vm.yScore }}</li>
+        <li>Draws: {{ vm.drawScore }}</li>
+    </div>
+    <button ng-click="vm.handleReset()">
+        Reset
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        ng-click="vm.handleNewRound()"
+        ng-disabled="!vm.draw && !vm.winner"
+    >
+        New Round
+    </button>
+</div>
